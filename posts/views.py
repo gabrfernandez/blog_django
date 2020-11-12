@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import PostForm
 from .models import Post
@@ -20,7 +20,10 @@ def detail_view(request, id):
     return render(request, 'posts/detail.html', context)
 
 def create_view(request):
-    form=PostForm(request.POST or None, request.FILES or None)
+    form = PostForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        post = form.save()
+        return redirect(post.get_absolute_url())
     context = {
         'form' : form
     }
