@@ -30,3 +30,9 @@ def create_view(request):
         'form' : form
     }
     return render(request, 'posts/create.html', context)
+
+@login_required(login_url='/')
+def delete_view(request, id):
+    post = get_object_or_404(Post,id=id)
+    post.delete()
+    return redirect('/')
