@@ -4,14 +4,22 @@
     <meta charset="UTF-8">
     <title>My Title</title>
     {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css'%}">
 </head>
 <body>
+    <div class="container" style="padding-top:45px; padding-bottom:45px">
     {% for post in posts %}
-    <h3>{{post.title}}</h3>
-    <img src="{{post.image.url}}" alt="{{post.title}}" />
-    <small>{{post.date}}</small>
-    <p>{{post.contentgi}}</p>
+    <div class="card" style="width: 48rem; margin-bottom:30px">
+      <img src="{{post.image.url}}" class="card-img-top" alt="{{post.title}}">
+      <div class="card-body">
+        <h5 class="card-title">{{post.title}}</h5>
+        <p class="card-text">{{post.content | truncatechars:150}}</p>
+        <a href="#" class="btn btn-primary">More</a>
+      </div>
+    </div>
     {% endfor %}
-    <img src="{% static 'img/ipad.jpg'%}" alt="ipad"/>
+    </div>
+
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
 </body>
 </html>
