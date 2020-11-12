@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import PostForm
@@ -7,7 +8,7 @@ from .models import Post
 # Create your views here.
 def index(request):
     context={
-        'posts':Post.objects.all()
+        'posts':Post.objects.all().order_by('-id')
     }
     return render(request, 'posts/index.html', context)
 
@@ -19,6 +20,7 @@ def detail_view(request, id):
     }
     return render(request, 'posts/detail.html', context)
 
+@login_required(login_url='/')
 def create_view(request):
     form = PostForm(request.POST or None, request.FILES or None)
     if form.is_valid():
