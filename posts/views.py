@@ -36,3 +36,15 @@ def delete_view(request, id):
     post = get_object_or_404(Post,id=id)
     post.delete()
     return redirect('/')
+
+def update_view(request, id):
+    post = get_object_or_404(Post, id=id)
+    form = PostForm(request.POST or None, request.FILES or None, instance=post)
+
+    if form.is_valid():
+        post.save()
+        return redirect(post.get_absolute_url())
+    context = {
+        'form' : form
+    }
+    return render ( request, 'posts/create.html', context)

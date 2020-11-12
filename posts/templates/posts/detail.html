@@ -10,6 +10,7 @@
           <small>{{post.date}}</small>
         <p class="card-text">{{post.content}}</p>
         <a href="{% url 'delete' post.id %}" class="btn btn-danger" onclick="return confirm('Are you sure')">Delete</a>
+          <a href="{% url 'update' post.id %}" class="btn btn-info" >Update</a>
       </div>
     </div>
     </div>
