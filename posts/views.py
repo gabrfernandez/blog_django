@@ -1,9 +1,10 @@
 from django.shortcuts import render
+from .models import Post
 
 # Create your views here.
 def index(request):
+
     context={
-        'message':'This is my first message',
-        'message2':'Second message',
+        'posts':Post.objects.all()
     }
     return render(request, 'posts/index.html', context)

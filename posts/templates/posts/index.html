@@ -6,9 +6,12 @@
     {% load static %}
 </head>
 <body>
-    <h1>This is home page</h1>
-    <p>{{message}}</p>
-    <p>{{message2}}</p>
+    {% for post in posts %}
+    <h3>{{post.title}}</h3>
+    <img src="{{post.image.url}}" alt="{{post.title}}" />
+    <small>{{post.date}}</small>
+    <p>{{post.contentgi}}</p>
+    {% endfor %}
     <img src="{% static 'img/ipad.jpg'%}" alt="ipad"/>
 </body>
 </html>
