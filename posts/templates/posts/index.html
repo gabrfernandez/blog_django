@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>My Title</title>
+    {% load static %}
 </head>
 <body>
-<h1>This is home page</h1>
-{{message}}
-{{message2}}
+    <h1>This is home page</h1>
+    <p>{{message}}</p>
+    <p>{{message2}}</p>
+    <img src="{% static 'img/ipad.jpg'%}" alt="ipad"/>
 </body>
 </html>
