@@ -2,23 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Title</title>
+    <title>Detail Page</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css'%}">
 </head>
 <body>
     <div class="container" style="padding-top:45px; padding-bottom:45px">
-    {% for post in posts %}
     <div class="card" style="width: 48rem; margin-bottom:30px">
       <img src="{{post.image.url}}" class="card-img-top" alt="{{post.title}}">
       <div class="card-body">
         <h5 class="card-title">{{post.title}}</h5>
           <small>{{post.date}}</small>
-        <p class="card-text">{{post.content | truncatechars:150}}</p>
-        <a href="{% url 'detail' post.id %}" class="btn btn-primary">More</a>
+        <p class="card-text">{{post.content}}</p>
+        <a href="#" class="btn btn-primary">More</a>
       </div>
     </div>
-    {% endfor %}
     </div>
 
     <script src="{% static 'js/bootstrap.min.js'%}"></script>
