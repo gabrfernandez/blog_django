@@ -1,9 +1,9 @@
-#Blog
-###Python Django blog app
+# Blog
+### Python Django blog app
 Used Crispy Forms, Django Admin, Django 
-#####Home
+##### Home
 ![](media/images/homepage.png)
-#####Detail Page
+##### Detail Page
 ![](media/images/detailpage.png)
-#####Creation Page
+##### Creation Page
 ![](media/images/creationpage.png)
