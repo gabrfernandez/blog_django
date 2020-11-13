@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
-
+from django.contrib import messages
 from .forms import PostForm
 from .models import Post
 
@@ -15,7 +15,7 @@ def index(request):
     if query:
         post_list = post_list.filter(Q(title__icontains=query) | Q(content__icontains=query))
     # pagination
-    paginator = Paginator(post_list, 2)
+    paginator = Paginator(post_list, 1)
     page = request.GET.get('page')
     post_list = paginator.get_page(page)
     context = {
@@ -38,6 +38,7 @@ def create_view(request):
     form = PostForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         post = form.save()
+        messages.success(request, "You have created a post")
         return redirect(post.get_absolute_url())
     context = {
         'form': form
@@ -49,6 +50,7 @@ def create_view(request):
 def delete_view(request, id):
     post = get_object_or_404(Post, id=id)
     post.delete()
+    messages.success(request, "You have deleted your post")
     return redirect('/')
 
 

@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from users.forms import LoginForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -38,4 +39,5 @@ def register_view(request):
 
 def logout_view(request):
     logout(request)
+    messages.success(request, "You have successfully logged out")
     return redirect('index')
