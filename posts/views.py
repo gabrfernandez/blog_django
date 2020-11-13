@@ -60,6 +60,7 @@ def update_view(request, id):
 
     if form.is_valid():
         post.save()
+        messages.success(request, "Your post has been updated")
         return redirect(post.get_absolute_url())
     context = {
         'form': form
